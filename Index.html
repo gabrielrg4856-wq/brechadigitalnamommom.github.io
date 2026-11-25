@@ -1,0 +1,493 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Inoma 2139</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{color-scheme:dark;--gl:max(16px,5vw,env(safe-area-inset-left,0px));--gr:max(16px,5vw,env(safe-area-inset-right,0px));
+  --bg:#07080d; --bg2:#0d0f18; --ink:#e8ecf5; --mute:#8b93a8;
+  --cy:#3df0ff; --mg:#ff3d8b; --am:#ffb347; --line:#1f2333;
+  --sans:'Space Grotesk',system-ui,sans-serif; --mono:'Space Mono',ui-monospace,monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.6}
+a{color:inherit;text-decoration:none}
+em{color:var(--mute)}
+
+.nav{position:fixed;inset:0 0 auto 0;z-index:10;display:flex;justify-content:space-between;align-items:center;padding:14px 5vw;background:rgba(7,8,13,.8);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.logo{font-family:var(--mono);font-weight:700;letter-spacing:.15em}
+.logo span{color:var(--cy);margin-left:6px}
+.nav nav{display:flex;gap:22px;font-size:.9rem;color:var(--mute)}
+.nav nav a:hover{color:var(--cy)}
+
+.hero{position:relative;display:flex;flex-direction:column;justify-content:center;padding:120px 5vw 100px;overflow:hidden}
+.grid-bg{position:absolute;inset:0;background:
+  linear-gradient(transparent 94%,rgba(61,240,255,.12) 95%) 0 0/100% 48px,
+  linear-gradient(90deg,transparent 94%,rgba(61,240,255,.12) 95%) 0 0/48px 100%;
+  mask-image:radial-gradient(ellipse at 70% 40%,#000 0,transparent 70%);opacity:.7}
+.eyebrow{font-family:var(--mono);font-size:.8rem;letter-spacing:.2em;text-transform:uppercase;color:var(--cy);margin-bottom:14px;position:relative}
+.glitch{position:relative;font-size:clamp(3.5rem,14vw,10rem);line-height:.95;letter-spacing:-.03em;font-weight:700}
+.glitch::before,.glitch::after{content:attr(data-text);position:absolute;inset:0}
+.glitch::before{color:var(--mg);transform:translate(3px,0);mix-blend-mode:screen;animation:gl 3.2s infinite steps(1)}
+.glitch::after{color:var(--cy);transform:translate(-3px,0);mix-blend-mode:screen;animation:gl 2.7s infinite steps(1) reverse}
+@keyframes gl{0%,90%,100%{clip-path:inset(0 0 0 0)}92%{clip-path:inset(10% 0 60% 0)}95%{clip-path:inset(55% 0 10% 0)}}
+.lead{max-width:56ch;font-size:1.2rem;color:var(--mute);margin:24px 0 32px;position:relative}
+.cta{display:flex;gap:14px;flex-wrap:wrap;position:relative}
+.btn{display:inline-block;padding:12px 22px;border:1px solid var(--cy);background:var(--cy);color:#001014;font-weight:700;border-radius:2px;cursor:pointer;font-family:var(--sans);font-size:1rem;transition:.2s}
+.btn:hover{box-shadow:0 0 24px rgba(61,240,255,.5)}
+.btn.ghost{background:transparent;color:var(--cy)}
+.ticker{position:absolute;bottom:0;left:0;right:0;display:flex;gap:48px;white-space:nowrap;padding:12px 0;border-top:1px solid var(--line);font-family:var(--mono);font-size:.75rem;color:var(--mute);animation:tick 30s linear infinite;width:max-content}
+@keyframes tick{to{transform:translateX(-50%)}}
+
+.section{padding:96px 5vw;max-width:1200px;margin:0 auto}
+.section.alt{background:var(--bg2);max-width:none;padding-left:max(5vw,calc((100vw - 1200px)/2));padding-right:max(5vw,calc((100vw - 1200px)/2))}
+h2{font-size:clamp(2rem,5vw,3.2rem);line-height:1.05;letter-spacing:-.02em;margin-bottom:10px}
+.sub{color:var(--mute);max-width:62ch;margin-bottom:32px}
+
+.toggle{display:flex;gap:8px;margin-bottom:20px;flex-wrap:wrap}
+.tab,.plan{font-family:var(--mono);padding:10px 18px;background:transparent;color:var(--mute);border:1px solid var(--line);cursor:pointer;transition:.2s;font-size:.9rem}
+.tab:hover,.plan:hover{color:var(--ink);border-color:var(--mute)}
+.tab.active,.plan.active{color:#001014;background:var(--cy);border-color:var(--cy)}
+
+.world{display:grid;grid-template-columns:1.1fr 1fr;gap:0;border:1px solid var(--line);margin-bottom:28px;overflow:hidden;transition:.5s}
+.world-art{position:relative;min-height:320px;background:linear-gradient(180deg,#1a1040,#ff3d8b44 80%,#ffb34733);transition:.6s;overflow:hidden}
+.sun{position:absolute;left:50%;bottom:28%;width:140px;height:140px;border-radius:50%;transform:translateX(-50%);background:linear-gradient(#ffb347,#ff3d8b);transition:.6s;box-shadow:0 0 80px #ff3d8b88}
+.skyline{position:absolute;left:0;right:0;bottom:0;height:42%;background:
+  linear-gradient(#0b0d16,#0b0d16) 4% 100%/9% 70% no-repeat,
+  linear-gradient(#0b0d16,#0b0d16) 16% 100%/7% 95% no-repeat,
+  linear-gradient(#0b0d16,#0b0d16) 27% 100%/10% 55% no-repeat,
+  linear-gradient(#0b0d16,#0b0d16) 41% 100%/8% 85% no-repeat,
+  linear-gradient(#0b0d16,#0b0d16) 53% 100%/11% 65% no-repeat,
+  linear-gradient(#0b0d16,#0b0d16) 68% 100%/7% 100% no-repeat,
+  linear-gradient(#0b0d16,#0b0d16) 79% 100%/9% 60% no-repeat,
+  linear-gradient(#0b0d16,#0b0d16) 91% 100%/8% 80% no-repeat}
+.world[data-state="barrio"] .world-art{background:linear-gradient(180deg,#1b1d22,#3a3326 85%,#2a2418)}
+.world[data-state="barrio"] .sun{background:#555a62;box-shadow:0 0 30px #00000088;opacity:.5;bottom:35%}
+.world-text{padding:32px;display:flex;flex-direction:column;gap:14px;justify-content:center}
+.world-text h3{font-size:1.6rem}
+.world-text p{color:var(--mute)}
+.world-text ul{list-style:none;display:grid;gap:8px}
+.world-text li{font-family:var(--mono);font-size:.85rem;padding-left:20px;position:relative}
+.world-text li::before{content:"▸";position:absolute;left:0;color:var(--cy)}
+.world[data-state="barrio"] .world-text li::before{color:var(--mg)}
+
+.cards{display:grid;gap:18px}
+.cards.three{grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+.card{padding:24px;border:1px solid var(--line);background:rgba(255,255,255,.02);transition:.25s}
+.card:hover{border-color:var(--cy);transform:translateY(-3px)}
+.card h4{margin-bottom:8px;font-size:1.1rem}
+.card p{color:var(--mute);font-size:.95rem}
+
+.plans{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px}
+.panel{border:1px solid var(--line);padding:28px;display:grid;gap:20px;background:var(--bg)}
+.meter label{display:flex;justify-content:space-between;font-family:var(--mono);font-size:.85rem;margin-bottom:6px}
+.bar{height:10px;background:var(--line)}
+.bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--mg),var(--cy));transition:width .6s}
+.status{font-family:var(--mono);color:var(--am);border-left:3px solid var(--am);padding-left:14px;min-height:3em}
+
+.char .avatar{width:64px;height:64px;border-radius:50%;display:grid;place-items:center;font-family:var(--mono);font-size:1.6rem;margin-bottom:14px;border:2px dashed var(--mute);color:var(--mute)}
+.char[data-c="destruir"] .avatar{border-color:var(--mg);color:var(--mg)}
+.char[data-c="negociar"] .avatar{border-color:var(--am);color:var(--am)}
+.char[data-c="transformar"] .avatar{border-color:var(--cy);color:var(--cy)}
+.tag{font-family:var(--mono);font-size:.75rem;text-transform:uppercase;letter-spacing:.1em;color:var(--cy)!important;margin-bottom:8px}
+.conflict{margin-top:12px;padding-top:12px;border-top:1px solid var(--line);color:var(--ink)!important}
+.note{margin-top:22px;color:var(--mute);font-size:.9rem}
+
+.story{border:1px solid var(--line);padding:clamp(22px,4vw,44px);background:var(--bg);min-height:340px}
+.scene-meta{font-family:var(--mono);font-size:.75rem;color:var(--cy);letter-spacing:.15em;text-transform:uppercase}
+.story h3{font-size:1.8rem;margin:8px 0 14px}
+.story>p#scene-text{max-width:66ch;color:#c9cfdf;font-size:1.05rem}
+.choices{display:grid;gap:10px;margin-top:26px}
+.choice{text-align:left;padding:14px 18px;background:transparent;border:1px solid var(--line);color:var(--ink);font:inherit;cursor:pointer;transition:.2s}
+.choice:hover{border-color:var(--cy);background:rgba(61,240,255,.06);padding-left:26px}
+.choice.restart{border-color:var(--mg);color:var(--mg)}
+.endings{margin-top:18px;font-family:var(--mono);font-size:.85rem;color:var(--mute);display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+.end{padding:3px 10px;border:1px dashed var(--line);opacity:.5}
+.end.found{opacity:1;border:1px solid var(--cy);color:var(--cy)}
+
+.accordion{display:grid;gap:10px}
+details{border:1px solid var(--line);padding:16px 20px;background:rgba(255,255,255,.02)}
+summary{cursor:pointer;font-weight:500;list-style:none}
+summary::before{content:"+";font-family:var(--mono);color:var(--cy);margin-right:12px}
+details[open] summary::before{content:"−"}
+details p{margin-top:12px;color:var(--mute)}
+
+.flow{list-style:none;display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:0;counter-reset:s}
+.flow li{counter-increment:s;padding:20px;border:1px solid var(--line);position:relative;font-size:.9rem;color:var(--mute)}
+.flow li::before{content:"0" counter(s);font-family:var(--mono);color:var(--cy);display:block;margin-bottom:6px}
+.flow li b{display:block;color:var(--ink);font-size:1.05rem}
+
+footer{padding:60px 5vw;border-top:1px solid var(--line);max-width:1200px;margin:0 auto;color:var(--mute);font-size:.9rem}
+footer h3{color:var(--ink);margin-bottom:12px}
+footer ul{display:grid;gap:8px;list-style:none}
+.small{margin-top:22px;font-family:var(--mono);font-size:.75rem}
+
+
+@media(max-width:760px){
+  .nav nav{display:none}
+  .world{grid-template-columns:1fr}
+  .world-art{min-height:220px}
+}
+@media(prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important}
+}
+
+.nav{padding:calc(14px + env(safe-area-inset-top,0px)) var(--gr) 14px var(--gl)}
+.hero{padding:140px var(--gr) 110px var(--gl)}
+.section,.section.alt{padding-left:var(--gl);padding-right:var(--gr)}
+footer{padding-left:var(--gl);padding-right:var(--gr)}
+.share{margin-top:34px;padding:22px;border:1px solid var(--line);display:grid;gap:12px;justify-items:start}
+.share button{font-family:var(--mono);padding:10px 16px;background:transparent;color:var(--cy);border:1px solid var(--cy);cursor:pointer}
+#qr{background:#fff;padding:12px;display:none}
+#qr.on{display:block}
+#qr-url{font-family:var(--mono);font-size:.75rem;word-break:break-all;user-select:all}
+.nav nav{flex-wrap:wrap}
+
+</style>
+<header class="nav">
+  <a href="#inicio" class="logo">INOMA<span>2139</span></a>
+  <nav>
+    <a href="#mundo">El mundo</a>
+    <a href="#plan">Plan Skyfront</a>
+    <a href="#resistencia">Resistencia</a>
+    <a href="#historia">Historia</a>
+    <a href="#teoria">Marco</a>
+  </nav>
+</header>
+
+<main>
+<!-- HERO -->
+<section id="inicio" class="hero">
+  <div class="grid-bg"></div>
+  <p class="eyebrow">Narrativa interactiva · Prototipo v0.1</p>
+  <h1 class="glitch" data-text="SKYFRONT">SKYFRONT</h1>
+  <p class="lead">Inoma, la Nueva Gran Pangea. Los gobiernos cayeron y una corporación ofrece vivir para siempre, si puedes pagar la próxima actualización.</p>
+  <div class="cta">
+    <a class="btn" href="#historia">Entrar a la historia</a>
+    <a class="btn ghost" href="#mundo">Explorar el mundo</a>
+  </div>
+  <div class="ticker" aria-hidden="true">
+    <span>AÑO 2139</span><span>ACTUALIZACIÓN ENERGÉTICA PENDIENTE</span><span>PERMANENCIA = CAPACIDAD DE PAGO</span><span>NUEVA GRAN PANGEA</span><span>AÑO 2139</span><span>ACTUALIZACIÓN ENERGÉTICA PENDIENTE</span><span>PERMANENCIA = CAPACIDAD DE PAGO</span><span>NUEVA GRAN PANGEA</span>
+  </div>
+</section>
+
+<!-- MUNDO -->
+<section id="mundo" class="section">
+  <p class="eyebrow">01 · Contexto</p>
+  <h2>Dos Inomas en el mismo territorio</h2>
+  <p class="sub">Cuando el Estado se retira, la infraestructura pasa a manos privadas. Cambia entre los dos mundos.</p>
+
+  <div class="toggle" role="tablist">
+    <button class="tab active" data-world="jardin" role="tab">Jardines virtuales</button>
+    <button class="tab" data-world="barrio" role="tab">Barrios de Inoma</button>
+  </div>
+
+  <div class="world" id="world" data-state="jardin">
+    <div class="world-art" aria-hidden="true">
+      <div class="sun"></div>
+      <div class="skyline"></div>
+    </div>
+    <div class="world-text">
+      <h3 id="world-title">Jardines virtuales</h3>
+      <p id="world-desc">Existencia digital sin desgaste: memoria completa, energía garantizada, paisajes diseñados. Quienes viven aquí casi no recuerdan que hay un afuera.</p>
+      <ul id="world-list">
+        <li>Procesador cerebral siempre actualizado</li>
+        <li>Energía sin límite de suscripción</li>
+        <li>Acceso, uso y permanencia en condiciones dignas</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="cards three">
+    <article class="card"><h4>Colapso político</h4><p>Décadas de conflicto y gobiernos caídos. Sin instituciones públicas que garanticen servicios básicos.</p></article>
+    <article class="card"><h4>Corporaciones como Estado</h4><p>Las grandes empresas asumen la infraestructura vital: energía, conciencia, permanencia.</p></article>
+    <article class="card"><h4>Crisis socioambiental</h4><p>La escasez y el deterioro golpean primero a las comunidades marginadas. Los privilegiados se refugian en lo virtual.</p></article>
+  </div>
+</section>
+
+<!-- PLAN -->
+<section id="plan" class="section alt">
+  <p class="eyebrow">02 · Mecánica de exclusión</p>
+  <h2>Elige tu plan de permanencia</h2>
+  <p class="sub">Simulador: observa qué pasa con tu conciencia según lo que puedes pagar.</p>
+
+  <div class="plans">
+    <button class="plan" data-plan="0">Jardín</button>
+    <button class="plan" data-plan="1">Estándar</button>
+    <button class="plan active" data-plan="2">Mínimo</button>
+    <button class="plan" data-plan="3">Sin renovar</button>
+  </div>
+
+  <div class="panel">
+    <div class="meter"><label>Memoria conservada <b id="m-mem">0%</b></label><div class="bar"><i id="b-mem"></i></div></div>
+    <div class="meter"><label>Capacidades cognitivas <b id="m-cap">0%</b></label><div class="bar"><i id="b-cap"></i></div></div>
+    <div class="meter"><label>Energía asignada <b id="m-ene">0%</b></label><div class="bar"><i id="b-ene"></i></div></div>
+    <p class="status" id="plan-msg"></p>
+  </div>
+</section>
+
+<!-- RESISTENCIA -->
+<section id="resistencia" class="section">
+  <p class="eyebrow">03 · Personajes</p>
+  <h2>La comunidad de resistencia</h2>
+  <p class="sub">No todos los excluidos quieren lo mismo. Tres posturas, tres contradicciones. <em>(Nombres y rasgos provisionales: editar con el equipo.)</em></p>
+
+  <div class="cards three chars">
+    <article class="card char" data-c="destruir">
+      <div class="avatar">?</div>
+      <h4>[Personaje 1] · Destruir</h4>
+      <p class="tag">Quiere tumbar Skyfront</p>
+      <p>Perdió a alguien por una actualización impagable. Su rabia es legítima, pero su plan dejaría a millones sin memoria.</p>
+      <p class="conflict"><b>Contradicción:</b> ¿acabar con el sistema es acabar con los usuarios?</p>
+    </article>
+    <article class="card char" data-c="negociar">
+      <div class="avatar">?</div>
+      <h4>[Personaje 2] · Negociar</h4>
+      <p class="tag">Quiere mejores condiciones</p>
+      <p>Cree que dentro del sistema se puede ganar algo. Conoce los datos y la letra pequeña de los contratos.</p>
+      <p class="conflict"><b>Contradicción:</b> ¿negociar legitima a quien controla todo?</p>
+    </article>
+    <article class="card char" data-c="transformar">
+      <div class="avatar">?</div>
+      <h4>[Personaje 3] · Transformar</h4>
+      <p class="tag">Quiere recuperar la infraestructura</p>
+      <p>Repara procesadores desechados y reparte energía entre vecinos. Tecnología mundana, hecha a mano.</p>
+      <p class="conflict"><b>Contradicción:</b> ¿puede lo comunitario escalar sin replicar el poder?</p>
+    </article>
+  </div>
+  <p class="note">Referencia de construcción: protagonistas irreverentes, curiosos y desolados, con vidas exóticas y rasgos irreplicables (<i>Opio en las nubes</i>).</p>
+</section>
+
+<!-- HISTORIA -->
+<section id="historia" class="section alt">
+  <p class="eyebrow">04 · Narrativa interactiva</p>
+  <h2>Decide qué pasa con Skyfront</h2>
+  <div class="story" id="story" aria-live="polite">
+    <p class="scene-meta" id="scene-meta"></p>
+    <h3 id="scene-title"></h3>
+    <p id="scene-text"></p>
+    <div class="choices" id="choices"></div>
+  </div>
+  <div class="endings">
+    <span>Finales descubiertos:</span>
+    <b class="end" data-end="destruir">Destruir</b>
+    <b class="end" data-end="negociar">Negociar</b>
+    <b class="end" data-end="transformar">Transformar</b>
+  </div>
+</section>
+
+<!-- TEORIA -->
+<section id="teoria" class="section">
+  <p class="eyebrow">05 · Marco conceptual</p>
+  <h2>De dónde sale cada idea</h2>
+  <p class="sub">Cada elemento del mundo conecta con una lectura del curso.</p>
+
+  <div class="accordion" id="acc">
+    <details open>
+      <summary>Brechas digitales · Saavedra et al. (2021) y Van Dijk</summary>
+      <p>La brecha es multidimensional: acceso, motivación, habilidades y uso. En Inoma: quién puede pagar, quién quiere o necesita usar Skyfront y quién decide la exclusión.</p>
+    </details>
+    <details>
+      <summary>Feminismo de datos · D’Ignazio y Klein (2023)</summary>
+      <p>Quién controla los datos, quién queda fuera y qué poder implica. Skyfront concentra datos y recuerdos de millones.</p>
+    </details>
+    <details>
+      <summary>Tecnologías mundanas · Nemer (2022)</summary>
+      <p>Apropiación cotidiana desde la reparación y el uso creativo. Es el corazón del final «Transformar»: redes alternativas con procesadores reutilizados.</p>
+    </details>
+    <details>
+      <summary>Impactos socioambientales · Penco en Tramas (Peña y Ananías, 2025)</summary>
+      <p>Extractivismo y tierras raras. La dependencia energética de Skyfront vincula desigualdad digital y crisis ambiental.</p>
+    </details>
+    <details>
+      <summary>Referentes estéticos</summary>
+      <p>Cyberpunk 2077, Blade Runner (basada en <i>¿Sueñan los androides con ovejas eléctricas?</i>) y Black Mirror para control social y jerarquías.</p>
+    </details>
+  </div>
+</section>
+
+<!-- ESTRUCTURA -->
+<section class="section alt" id="estructura">
+  <p class="eyebrow">06 · Maqueta del relato</p>
+  <h2>Secuencia narrativa</h2>
+  <ol class="flow">
+    <li><b>Inicio</b>Entrada a Skyfront</li>
+    <li><b>Mundo</b>Jardines vs barrios</li>
+    <li><b>Plan</b>Mecánica de exclusión</li>
+    <li><b>Resistencia</b>Tres posturas</li>
+    <li><b>Historia</b>Decisión y finales</li>
+    <li><b>Marco</b>Lecturas del curso</li>
+  </ol>
+</section>
+</main>
+
+<footer>
+  <h3>Referencias</h3>
+  <ul>
+    <li>D’Ignazio, C., &amp; Klein, L. (2023). Introducción: por qué la ciencia de datos necesita feminismo. En <i>Feminismo de datos</i>.</li>
+    <li>Nemer, D. <i>Technology of the Oppressed: Inequity and the Digital Mundane on Favelas of Brazil</i>, pp. 1-32.</li>
+    <li>Peña, P. y Ananías, C. (julio de 2025). Geopolítica del fin del mundo: tierras raras en Penco, Chile. <i>TRAMAS</i>.</li>
+    <li>Saavedra, V., et al. <i>Desigualdades digitales. Aproximación sociojurídica al acceso a Internet en Colombia</i>. Dejusticia, 19 de agosto de 2021, pp. 25-52.</li>
+  </ul>
+  
+  <div class="share">
+    <h3>Abrir en el celular</h3>
+    <button id="qr-btn" type="button">Mostrar código QR</button>
+    <div id="qr"></div>
+    <p id="qr-url"></p>
+  </div>
+  <p class="small">Prototipo académico · Proyecto final · Narrativas Digitales</p>
+</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<script>
+(function(){
+'use strict';
+
+/* ---------- Mundo: jardines vs barrios ---------- */
+var worlds = {
+  jardin: {
+    title: 'Jardines virtuales',
+    desc: 'Existencia digital sin desgaste: memoria completa, energía garantizada, paisajes diseñados. Quienes viven aquí casi no recuerdan que hay un afuera.',
+    list: ['Procesador cerebral siempre actualizado','Energía sin límite de suscripción','Acceso, uso y permanencia en condiciones dignas']
+  },
+  barrio: {
+    title: 'Barrios de Inoma',
+    desc: 'Cuerpos físicos, apagones y dispositivos que ya nadie fabrica. Aquí se sobrevive con lo que se repara, se comparte o se rescata de los desechos.',
+    list: ['Procesadores obsoletos sin soporte','Energía racionada y compartida entre vecinos','Dependen de tecnología que no pueden costear']
+  }
+};
+var worldEl = document.getElementById('world');
+document.querySelectorAll('.tab').forEach(function(btn){
+  btn.addEventListener('click', function(){
+    document.querySelectorAll('.tab').forEach(function(b){ b.classList.remove('active'); });
+    btn.classList.add('active');
+    var w = worlds[btn.dataset.world];
+    worldEl.dataset.state = btn.dataset.world;
+    document.getElementById('world-title').textContent = w.title;
+    document.getElementById('world-desc').textContent = w.desc;
+    document.getElementById('world-list').innerHTML = w.list.map(function(i){ return '<li>'+i+'</li>'; }).join('');
+  });
+});
+
+/* ---------- Simulador de planes ---------- */
+var plans = [
+  {mem:100,cap:100,ene:100,msg:'Plan Jardín: todo garantizado. Desde aquí, la desigualdad es invisible.'},
+  {mem:80,cap:70,ene:65,msg:'Plan Estándar: funcionas, pero cada actualización pesa en el presupuesto.'},
+  {mem:45,cap:35,ene:30,msg:'Plan Mínimo: lagunas de memoria, pensamiento lento. Tienes que elegir qué recuerdos conservar.'},
+  {mem:8,cap:5,ene:0,msg:'Sin renovar: tu conciencia se apaga. Skyfront conserva tus datos, tú no.'}
+];
+function setPlan(i){
+  var p = plans[i];
+  [['mem',p.mem],['cap',p.cap],['ene',p.ene]].forEach(function(x){
+    document.getElementById('b-'+x[0]).style.width = x[1]+'%';
+    document.getElementById('m-'+x[0]).textContent = x[1]+'%';
+  });
+  document.getElementById('plan-msg').textContent = p.msg;
+}
+document.querySelectorAll('.plan').forEach(function(btn){
+  btn.addEventListener('click', function(){
+    document.querySelectorAll('.plan').forEach(function(b){ b.classList.remove('active'); });
+    btn.classList.add('active');
+    setPlan(+btn.dataset.plan);
+  });
+});
+setPlan(2);
+
+/* ---------- Historia ramificada ---------- */
+var scenes = {
+  inicio: {
+    meta:'Escena 1 · Inoma, 2139',
+    title:'El aviso de renovación',
+    text:'La comunidad se reúne en un taller de reparación. En la pantalla agrietada aparece el mismo mensaje de siempre: tu actualización energética vence en 72 horas. Esta vez no es un aviso individual, es de todo el barrio.',
+    choices:[
+      {t:'Infiltrarse en el núcleo de Skyfront', to:'nucleo'},
+      {t:'Pedir una reunión con la corporación', to:'mesa'},
+      {t:'Abrir el taller y reunir a los vecinos', to:'taller'}
+    ]
+  },
+  nucleo: {
+    meta:'Escena 2 · El núcleo',
+    title:'El corazón de la infraestructura',
+    text:'Dentro del núcleo, millones de conciencias dependen de un solo sistema. Hay una forma de apagarlo todo. Pero nadie sabe qué pasa con quienes están conectados en este momento.',
+    choices:[
+      {t:'Apagar Skyfront', to:'fin_destruir'},
+      {t:'Copiar los datos y negociar con ellos', to:'mesa'}
+    ]
+  },
+  mesa: {
+    meta:'Escena 2 · La mesa de negociación',
+    title:'Una oferta con letra pequeña',
+    text:'Skyfront ofrece un «plan comunitario»: energía mínima garantizada a cambio de ceder todos los datos del barrio. Es mejor que nada. También es más control.',
+    choices:[
+      {t:'Aceptar el plan comunitario', to:'fin_negociar'},
+      {t:'Rechazar y volver al taller', to:'taller'}
+    ]
+  },
+  taller: {
+    meta:'Escena 2 · El taller',
+    title:'Lo que ya existe en los barrios',
+    text:'Entre los desechos hay cientos de procesadores recuperables. Una vecina sabe repararlos, otro conoce cómo repartir energía entre casas. No es una tecnología nueva: es lo cotidiano, organizado.',
+    choices:[
+      {t:'Construir la red comunitaria', to:'fin_transformar'},
+      {t:'Esto no alcanza: ir al núcleo', to:'nucleo'}
+    ]
+  },
+  fin_destruir: {
+    end:'destruir',
+    meta:'Final · Destruir',
+    title:'Silencio',
+    text:'Skyfront cae. Los jardines se apagan, y con ellos las memorias de quienes no pudieron salir. La rabia tuvo su victoria, y su costo. ¿Quién respondió por los que estaban dentro?',
+    choices:[]
+  },
+  fin_negociar: {
+    end:'negociar',
+    meta:'Final · Negociar',
+    title:'Una cadena más larga',
+    text:'Hay energía para todos, pero los datos del barrio son ahora de Skyfront. La permanencia mejora, la dependencia también. El sistema sigue intacto, con una cara más amable.',
+    choices:[]
+  },
+  fin_transformar: {
+    end:'transformar',
+    meta:'Final · Transformar',
+    title:'La red de los barrios',
+    text:'Con procesadores reutilizados y energía compartida nace una infraestructura propia. No destruye Skyfront: le quita el monopolio. La pregunta cambia de «¿quién puede pagar?» a «¿quién decide cómo funciona?».',
+    choices:[]
+  }
+};
+
+function renderScene(id){
+  var s = scenes[id];
+  document.getElementById('scene-meta').textContent = s.meta;
+  document.getElementById('scene-title').textContent = s.title;
+  document.getElementById('scene-text').textContent = s.text;
+  var box = document.getElementById('choices');
+  box.innerHTML = '';
+  var list = s.choices.length ? s.choices : [{t:'Volver a empezar', to:'inicio', restart:true}];
+  list.forEach(function(c){
+    var b = document.createElement('button');
+    b.className = 'choice' + (c.restart ? ' restart' : '');
+    b.textContent = c.t;
+    b.addEventListener('click', function(){ renderScene(c.to); });
+    box.appendChild(b);
+  });
+  if(s.end){
+    var el = document.querySelector('.end[data-end="'+s.end+'"]');
+    if(el) el.classList.add('found');
+  }
+}
+renderScene('inicio');
+
+
+/* ---------- QR del enlace ---------- */
+var qrBtn=document.getElementById('qr-btn'),qrBox=document.getElementById('qr'),qrDone=false;
+qrBtn.addEventListener('click',function(){
+  var url=''; try{url=window.location.href.split('#')[0];}catch(e){}
+  document.getElementById('qr-url').textContent=url;
+  if(!qrDone && window.QRCode && url){ new QRCode(qrBox,{text:url,width:200,height:200}); qrDone=true; }
+  qrBox.classList.toggle('on');
+});
+})();
+</script>
+
+</body></html>
